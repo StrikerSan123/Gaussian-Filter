@@ -19,12 +19,12 @@ kernel = kernel / sum(kernel(:)); % Normalizar kernel
 imgfiltrada = zeros(altoimg, largoimg, RGB);
 
 for color = 1:RGB
-    img = img(:,:,color);
+    imgcol = img(:,:,color);
     imgFiltrada = zeros(altoimg, largoimg);
 
     for i = 1+floor(altokernel/2):(altoimg-floor(altokernel/2))
         for j = 1+floor(largokernel/2):(largoimg-floor(largokernel/2))
-            region = img(i-floor(altokernel/2):i+floor(altokernel/2), j-floor(largokernel/2):j+floor(largokernel/2));
+            region = imgcol(i-floor(altokernel/2):i+floor(altokernel/2), j-floor(largokernel/2):j+floor(largokernel/2));
             imgFiltrada(i, j) = sum(sum(region .* kernel));
         end
     end
